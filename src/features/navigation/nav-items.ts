@@ -6,6 +6,7 @@ import {
   IconChart,
   IconDashboard,
   IconFolders,
+  IconSettings,
   IconShield,
   IconUsers,
   IconWarehouse,
@@ -28,6 +29,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Payments", to: "/payments", permission: "payments.read", icon: IconCard },
   { label: "Reports", to: "/reports", permission: "reports.read", icon: IconChart },
   { label: "Users", to: "/users", permission: "users.manage", icon: IconShield },
+  { label: "Settings", to: "/settings", permission: "settings.read", icon: IconSettings },
 ];
 
 export function filterNavItems(permissions: string[] | undefined): NavItem[] {

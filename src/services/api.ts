@@ -30,6 +30,11 @@ export type DashboardSummary = {
   lowStockVariants: number | null;
 };
 
+export type SiteSettings = {
+  maintenanceMode: boolean;
+  updatedAt: string;
+};
+
 export class ApiError extends Error {
   status: number;
   code?: string;
@@ -330,6 +335,14 @@ export const api = {
       quantityAvailable: number;
     }>("/inventory/adjustments", {
       method: "POST",
+      body: JSON.stringify(body),
+    }),
+
+  getSettings: async () => (await request<SiteSettings>("/settings")).data,
+
+  updateSettings: (body: { maintenanceMode: boolean }) =>
+    mutate<SiteSettings>("/settings", {
+      method: "PATCH",
       body: JSON.stringify(body),
     }),
 };
